@@ -1,0 +1,104 @@
+
+
+// PARAMETERS
+$param_tingstrom_logo-height: 60px !default;
+$param_tingstrom_header-height: 120px !default;
+$param_tingstrom_header-padding: 10px !default;
+$param_tingstrom_header-font: inherit !default;
+$param_tingstrom_header-fontsize: 14px !default;
+$param_tingstrom_border-height: 20px !default;
+
+
+// BLOCK
+.tingstrom {
+	display: block;
+	margin: 0;
+	width: 100%;
+	padding-top: $param_tingstrom_header-height;
+	[ng-click],
+	[data-ng-click] {
+		cursor: pointer;
+	}
+}
+
+.tingstrom,
+.tingstrom *, // To make bootstrap work when scaffolding isn't included
+.tingstrom__logo,
+.tingstrom__header,
+.tingstrom__footer,
+.tingstrom__border,
+.tingstrom__primnav {
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+//--- ELEMENTS ----------------------------------------------------------//
+
+.tingstrom__logo {
+	display: block;
+	width: 100%;
+	height: $param_tingstrom_logo-height;
+	background-image: url('/images/tingstrom_logo.png');
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	background-size: contain;
+}
+
+.tingstrom__header {
+	transition: transform 300ms ease;
+	display: block;
+	position: fixed;
+	width: 100%;
+	left: 0;
+	top: 0;
+	padding: $param_tingstrom_header-padding;
+	height: $param_tingstrom_header-height;
+	background: #fff;
+	z-index: 50;
+	font-family: $param_tingstrom_header-font;
+	font-size: $param_tingstrom_header-fontsize
+}
+
+.tingstrom__footer {
+	display: flex;
+	width: 100%;
+	padding: 50px;
+	background-color: #131313;
+	align-items: center;
+	justify-content: space-around;
+	margin-bottom: $param_tingstrom_border-height;
+}
+
+.tingstrom__border {
+	display: block;
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: $param_tingstrom_border-height;
+	background-color: #fff;
+	z-index: 40;
+}
+
+.tingstrom__primnav {
+	display: flex;
+	width: 100%;
+	height: ($param_tingstrom_header-height - $param_tingstrom_logo-height - ($param_tingstrom_header-padding * 2));
+	align-items: flex-end;
+	justify-content: center;
+	& > * {
+		& + * {
+			margin-left: 50px;
+		}
+	}
+}
+
+//--- MODIFIERS ----------------------------------------------------------//
+
+.tingstrom__header--collapse {
+	transform: translate(0, -#{$param_tingstrom_logo-height + $param_tingstrom_header-padding * 2});
+}
+
+
+//--- MEDIA QUERRIES ----------------------------------------------------------//

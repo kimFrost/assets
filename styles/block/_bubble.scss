@@ -1,0 +1,175 @@
+
+
+// PARAMETERS
+
+// BLOCK
+.bubble {
+	width: 100%;
+	display: block;
+	position: relative;
+	padding-bottom: 100%;
+	color: $color_white;
+  font-size: inherit;
+  text-decoration: none;
+
+	&:after {
+
+	}
+}
+
+.bubble {
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+//--- ELEMENTS ----------------------------------------------------------//
+
+.bubble__icon {
+	@include transition(all 300ms ease);
+	@include transform-origin(50%, 50%);
+	@include border-radius(50%, 50%, 50%, 50%);
+	@include scale(1, 1);
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: $color_heart;
+	text-align: center;
+	overflow: hidden;
+  font-size: inherit;
+  text-decoration: none;
+
+	background-repeat: no-repeat;
+	background-position: center center;
+
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  -webkit-box-align: center;
+  -webkit-flex-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+
+
+  /*
+  &:hover {
+    //-webkit-filter: brightness(1.3);
+    //filter: brightness(1.3);
+    -webkit-filter: invert(1);
+    filter: invert(1);
+  }
+  */
+
+	& > img {
+		display: block;
+		width: 100%;
+	}
+}
+
+//--- MODIFIERS -------------------------------------------------------//
+
+.bubble--link {
+	cursor: pointer;
+	&:hover {
+		&:after,
+		.bubble__icon {
+			@include transform(rotate(-30deg) scale(0.8, 0.8));
+			background-color: lighten($color_heart, 10%);
+
+		}
+	}
+}
+
+.bubble--innershadow {
+	.bubble__icon {
+		&:after {
+			@include border-radius(50%, 50%, 50%, 50%);
+			//@include box-shadow(0px 0px 50px 0px rgba(0,0,0,0.5) inset);
+			@include box-shadow(0px 0px 50px 0px rgba(0,0,0,0.1) inset);
+			content: "";
+			display: block;
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			z-index: 50;
+		}
+	}
+}
+
+.bubble--grey {
+	color: $color_black;
+	.bubble__icon {
+		background-color: $color_grey;
+	}
+	&.bubble--link {
+		&:hover {
+			.bubble__icon {
+				color: $color_white;
+				background-color: lighten($color_grey, 10%);
+			}
+		}
+	}
+}
+
+.bubble__icon--seo {
+	background-image: url('/images/graphic/bubble_icon_seo.png');
+}
+
+
+
+
+
+
+
+/*
+//animation-name: bubbleSpinOut;
+//animation-duration: 400ms;
+//animation-timing-function: ease;
+//animation-iteration-count: 1;
+//animation-fill-mode: backwards;
+//animation-play-state: paused;
+//animation-fill-mode: backwards;
+
+//@include transform(rotate3d(1, 1, 0, -180deg) scale(0.8, 0.8));
+//animation-name: bubbleSpinIn;
+//animation-fill-mode: forward;
+//animation-fill-mode: backwards;
+//animation-play-state: running;
+*/
+
+
+@include keyframes(bubbleSpinOut) {
+	0% {
+
+	}
+	100% {
+		@include scale(1, 1);
+		background-color: $color_heart;
+
+	}
+}
+
+@include keyframes(bubbleSpinIn) {
+	0% {
+
+	}
+	100% {
+		@include transform(rotate3d(1, 1, 0, -180deg) scale(0.8, 0.8));
+		background-color: lighten($color_heart, 10%);
+	}
+}

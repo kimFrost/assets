@@ -1,0 +1,154 @@
+
+
+// PARAMETERS
+$param_rte-font: inherit !default;
+$param_rte-font-weight: inherit !default;
+$param_rte_headline-font: inherit !default;
+
+// BLOCK
+.rte {
+	//@include fontSize(eta, 1.4);
+	display: block;
+	width: 100%;
+	counter-reset: item;
+	font-family: $param_rte-font;
+	font-weight: $param_rte-font-weight;
+	color: inherit;
+	& + & {
+		margin-top: 40px;
+	}
+}
+
+.rte p,
+.rte a,
+.rte h1,
+.rte h2,
+.rte h3,
+.rte h4,
+.rte img,
+.rte div,
+.rte form,
+.rte video {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 0;
+	&:last-child {
+		margin-bottom: 0;
+	}
+	&:not(img):not(a) {
+		width: 100%;
+	}
+	&.rte__neverstrech {
+		width: auto;
+		margin-left: auto;
+		margin-right: auto;
+	}
+	&:not(.rte__pull) {
+		& + * {
+			margin-top: 20px;
+		}
+	}
+	&:not(.rte__pullup) {
+		margin-bottom: 0;
+	}
+}
+
+.rte a {
+	display: inline-block;
+}
+
+.rte p {
+	text-align: center;
+	a {
+		display: inline;
+		text-transform: none;
+		color: inherit;
+		font-size: inherit;
+		font-weight: inherit;
+		line-height: inherit;
+	}
+}
+
+.rte h1,
+.rte h2,
+.rte h3,
+.rte h4 {
+	font-family: $param_rte_headline-font;
+}
+
+.rte video {
+	display: block;
+	width: 100%;
+}
+
+.rte,
+.rte__headline,
+.rte__segment,
+.rte__image,
+.rte__text {
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+//--- ELEMENTS ----------------------------------------------------------//
+
+.rte__headline {
+	@include fontSize(zeta, 1);
+	text-transform: uppercase;
+	display: block;
+	margin: 0;
+	padding: 0;
+	//font-weight: 400;
+	font-weight: inherit;
+	color: inherit;
+}
+
+.rte__pull {
+	& + * {
+		margin-top: 0;
+	}
+}
+
+.rte__push {
+	& + * {
+
+	}
+}
+
+.rte__pullup {
+	position: relative;
+	top: -90px;
+	margin-bottom: -90px;
+}
+
+//--- MODIFIERS ----------------------------------------------------------//
+
+.rte--center {
+	text-align: center;
+}
+
+.rte--narrow {
+	width: 40%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.rte--inherit {
+	font-family: inherit;
+	font-size: inherit;
+	line-height: 1;
+}
+
+.rte--theme-1 {
+
+}
+
+.rte__pullup--hard {
+	top: -180px;
+	margin-bottom: -180px;
+}
+
+//--- MEDIA QUERRIES ----------------------------------------------------------//
+

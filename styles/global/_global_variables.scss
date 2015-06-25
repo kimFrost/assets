@@ -1,0 +1,78 @@
+
+/* Global Variables */
+
+// Options booleans
+$mq-useAdaptive: true !global; // Media Querie mixin will skip if this ain't true
+$debug: false !global; // Show debug features
+
+
+/* COLORS */
+$color_black: #000000;
+$color_white: #ffffff;
+
+
+$color_lightgrey: #d7d6d4;
+$color_midgrey: #c0bebc;
+$color_darkgrey: #69625d;
+
+
+$color_peach: #eb6147;
+$color_coral: #37a4a4;
+$color_grass: #99cc33;
+$color_matgrey: #262626;
+
+
+/* FONTS */
+//$font_basic: "Verdane", "Myriad Pro", "Arial", Sans-serif;
+$font_basic: "Myriad Pro",  Sans-serif;
+$font_serifa-light: 'Serifa W01 Light1432850', $font_basic;
+$font_serifa-regular: 'Serifa W01 Regular', $font_basic;
+$font_serifa-bold: 'Serifa W01 Bold1432820', $font_basic;
+
+
+
+// PARAMETERS
+
+// Tingstrom
+$param_tingstrom_header-font: $font_serifa-bold;
+$param_tingstrom_header-fontsize: 16px;
+
+// BTN
+$param_btn-color: $color_white !default;
+$param_btn-background: #262626;
+$param_btn-active-background: $color_grass;
+$param_btn-font: $font_serifa-regular;
+$param_btn-font-weíght: 400;
+
+// RTE
+$param_rte-font: $font_serifa-light;
+$param_rte_headline-font: $font_serifa-bold;
+$param_rte-font-weight: 400;
+
+// ICON
+$param_icon-background: $color_darkgrey !default;
+
+// FORM
+$param_form-font: $font_basic;
+$param_form-input-background: $color_lightgrey;
+$param_form-input-color: $color_darkgrey;
+$param_form-button-background: $color_midgrey;
+$param_form-button-color: $color_white;
+$param_form-button-font-weight: 700;
+$param_form-submit-background: $color_grass;
+$param_form-submit-color: $color_white;
+
+
+
+
+// Media Queries, Labels and Content widths
+//@include newMediaQuerie((name: 'x-small', min-width: 1px, max-width: 569px, contentWidth: 100%, gutterWidth: 15px));
+//@include newMediaQuerie((name: 'small', min-width: 570px, max-width: 1099px, contentWidth: 100%, gutterWidth: 30px));
+//@include newMediaQuerie((name: 'medium', min-width: 1100px, contentWidth: 960px, gutterWidth: 50px, default: true));
+//@include newMediaQuerie((name: 'all', min-width: 1px));
+
+@include newMediaQuerie((name: 'x-small', min-width: 1px, max-width: 767px, contentWidth: 100%, gutterWidth: 15px));
+@include newMediaQuerie((name: 'small', min-width: 768px, max-width: 1099px, contentWidth: 100%, gutterWidth: 30px));
+@include newMediaQuerie((name: 'medium', min-width: 1100px, contentWidth: 960px, gutterWidth: 50px, default: true));
+@include newMediaQuerie((name: 'large', min-width: 1100px, contentWidth: 960px, gutterWidth: 50px, default: true));
+@include newMediaQuerie((name: 'all', min-width: 1px));

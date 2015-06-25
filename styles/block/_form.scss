@@ -1,0 +1,357 @@
+
+
+// PARAMETERS
+$element-spacing: 20px;
+
+// BLOCK
+.form {
+	@include fontSize(eta, 0);
+  display: block;
+  width: 100%;
+  font-family: $param_form-font;
+	// This is to fix in ng-valid bug in angular-file-upload
+	&.ng-dirty {
+		.form__upload {
+			&.ng-invalid {
+				outline: 1px solid red;
+			}
+		}
+	}
+}
+
+.form,
+.form__line,
+.form__label,
+.form__input,
+.form__button,
+.form__upload,
+.form__textarea,
+.form__select,
+.form__attach,
+.form__attachlist,
+.form__msg {
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+//--- PLACEHOLDERS ----------------------------------------------------------//
+
+%form__input {
+  @include fontSize(eta, 1.2);
+  //@include noUserSelect();
+  display: block;
+	position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 18px 16px;
+  background-color: $param_form-input-background;
+  color: $param_form-input-color;
+  outline: none;
+	border: none;
+  font-family: inherit;
+  &.ng-invalid {
+    &.ng-dirty {
+      outline: 1px solid red;
+    }
+  }
+}
+
+%form__button {
+  //@include noUserSelect();
+  @include fontSize(eta, 1);
+  display: block;
+	position: relative;
+  width: 100%;
+	min-width: 300px;
+	padding: 18px 16px;
+	margin: 0 auto;
+  background-color: $param_form-button-background;
+  color: $param_form-button-color;
+  border: none;
+  outline: none;
+  text-rendering: optimizelegibility;
+  text-transform: uppercase;
+  font-weight: $param_form-button-font-weight;
+  text-decoration: none;
+  font-family: inherit;
+	text-align: center;
+	cursor: pointer;
+	&:disabled {
+		opacity: 0.6;
+	}
+}
+
+//--- ELEMENTS ----------------------------------------------------------//
+
+.form__label {
+  display: block;
+  width: 100%;
+}
+
+.form__input {
+  @extend %form__input;
+	-moz-appearance:textfield;
+	&[type=number]::-webkit-inner-spin-button,
+	&[type=number]::-webkit-outer-spin-button {
+		-webkit-appearance: none;
+		margin: 0;
+	}
+}
+
+.form__textarea {
+  @extend %form__input;
+  @include fontSize(eta, 1.2);
+  min-height: 350px;
+}
+
+.form__button {
+  @extend %form__button;
+  //border: 2px dotted $color_hearth;
+  //color: $color_easter;
+}
+
+.form__select {
+  @extend %form__input;
+}
+
+.form__msg {
+  @include translate(0, 3px);
+  @include fontSize(beta, 1);
+  display: none;
+  width: 100%;
+  position: relative;
+  z-index: -1;
+  color: red;
+}
+
+.form__upload {
+	@extend %form__button;
+	padding-top: 4px;
+	padding-bottom: 8px;
+	& > label {
+		display: inline-block;
+		vertical-align: sub;
+		& + img {
+			margin-left: 20px;
+		}
+	}
+	& > input[type="file"] {
+		@include appearance(none);
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		opacity: 0;
+		z-index: 10;
+		&.ng-dirty {
+			&.ng-invalid {
+				& + .form__ui,
+				& ~ .form__ui {
+					outline: 1px solid $param_checker-error-color;
+				}
+			}
+		}
+	}
+	& > img {
+		display: inline-block;
+		margin: 0;
+	}
+	.form__ui {
+
+	}
+}
+
+.form__line {
+	display: block;
+	position: relative;
+	width: 100%;
+	clear: both;
+}
+
+.form__ui {
+	display: block;
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 0;
+}
+
+.form__attach {
+	display: block;
+	position: relative;
+}
+
+.form__attachlist {
+	display: block;
+	position: absolute;
+	background-color: $color_white;
+	left: 0;
+	top: 0;
+	width: 100%;
+	z-index: 30;
+	max-height: 370px;
+	overflow-y: auto;
+	& > * {
+		padding: 5px;
+		&:first-child {
+			//border-top: 1px solid $color_deepsea;
+		}
+		&:last-child {
+			//border-bottom: 1px solid $color_deepsea;
+		}
+		&:nth-child(odd) {
+			background-color: rgba($color_black, 0.05);
+		}
+		&:focus,
+		&:hover {
+			background-color: rgba($color_black, 0.2);
+		}
+		&:active {
+			background-color: rgba($color_black, 0.1);
+		}
+	}
+}
+
+.form__attachclear {
+	position: absolute;
+	top: -46px; // Magic number
+	right: 23px; // Magic number
+	z-index: 1;
+	&::before {
+		content: "\00d7";
+		display: block;
+	}
+}
+
+
+// Spacing rules
+.form__input,
+.form__textarea,
+.form__button,
+.form__select,
+.form__upload,
+.form__attachlist,
+.form__line,
+.form__msg {
+  & + * {
+		&:not(.form__attach) {
+			margin-top: $element-spacing;
+		}
+  }
+}
+
+//--- MODIFIERS ----------------------------------------------------------//
+
+.form--light {
+	%form__input {
+		background-color: $color_white;
+	}
+}
+
+.form__button--submit {
+	background-color: $param_form-submit-background;
+	color: $param_form-submit-color;
+}
+
+
+.form__line--2 {
+  &:after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+	%form__input,
+	%form__button {
+    width: calc(50% - #{$element-spacing});
+    margin-right: $element-spacing;
+    float: left;
+    & + .form__input {
+      margin-top: 0;
+      margin-right: 0;
+      margin-left: $element-spacing;
+    }
+  }
+	.form__msg {
+		width: calc(50% - #{$element-spacing});
+		margin-right: $element-spacing;
+		float: left;
+		& + .form__msg {
+			margin-right: 0;
+			margin-left: $element-spacing;
+		}
+	}
+}
+
+.form__line--narrow {
+	width: 40%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+.form__attachlist--hasresults {
+	border: 1px solid $color_darkgrey;
+	.form__attachclear {
+		display: block;
+	}
+}
+
+.form__upload--hasimage {
+	position: relative;
+	&::after {
+		content: "";
+		display: block;
+		position: absolute;
+		background-image: url('../images/icon-checked.png');
+		background-size: contain;
+		background-repeat: no-repeat;
+		width: 36px;
+		height: 28px;
+		right: 15px;
+		top: calc(50% - 14px);
+	}
+}
+
+.form__msg--show {
+	display: block;
+}
+
+//--- MEDIA QUERRIES ----------------------------------------------------------//
+
+@include mediaQueries('x-small') {
+	.form {
+		@include fontSize(delta, 0);
+	}
+	.form__line--narrow {
+		width: 100%;
+	}
+	%form__input,
+	%form__button {
+		@include fontSize(delta, 1);
+		min-width: 0;
+		padding: 12px 10px;
+	}
+	.form__line--2 {
+		%form__input,
+		%form__button {
+			margin-right: 0;
+			width: 100%;
+			float: none;
+			& + .form__input {
+				margin-left: 0;
+				margin-top: $element-spacing;
+			}
+		}
+	}
+	.form__upload {
+		& > label {
+			& + img {
+				width: 15%;
+			}
+		}
+	}
+}

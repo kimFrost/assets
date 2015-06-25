@@ -1,0 +1,55 @@
+
+// 20, 50, 100, 150, 200
+
+.spacer {
+	display: block;
+	width: 100%;
+	height: 1px;
+	margin-bottom: 19px;
+	clear: both;
+}
+
+.spacer {
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+.spacer--line {
+	background-color: $color_white;
+}
+
+.spacer--headline {
+	@include fontSize(eta);
+	height: auto;
+	background-color: transparent;
+	&:after {
+		content: "";
+		margin-top: 3px;
+		height: 1px;
+		display: block;
+		width: 100%;
+		background-color: $color_white;
+	}
+}
+
+
+.spacer--50 {
+	margin-bottom: 49px;
+}
+
+.spacer--70 {
+	margin-bottom: 69px;
+}
+
+.spacer--100 {
+	margin-bottom: 99px;
+}
+
+.spacer--150 {
+	margin-bottom: 149px;
+}
+
+.spacer--200 {
+	margin-bottom: 199px;
+}

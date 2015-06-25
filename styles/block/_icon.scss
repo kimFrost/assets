@@ -1,0 +1,91 @@
+
+// NOTES
+/*
+* (NOT USED ANYMORE) The scale number is not valid for all sizes. When the icon box grows the scale doesn't fit.
+*/
+
+
+// PARAMETERS
+$icon-size: 70px;
+
+// BLOCK
+
+.icon {
+	@include transition(all 300ms ease);
+	display: block;
+	position: relative;
+	width: 70px;
+	height: 70px;
+	text-align: center;
+	color: $param_icon-background;
+	font-size: #{$icon-size / 2.5};
+	line-height: $icon-size;
+	text-decoration: none;
+	&:hover,
+	&:focus {
+		@extend %icon--invert;
+	}
+	&:active {
+		@extend %icon--active;
+	}
+	// Nested icon in icon for grouping
+	& > & {
+		width: auto;
+		display: inline-block;
+		& + .icon {
+			margin-left: 5px;
+		}
+	}
+	&::before {
+		$size: sqrt(pow($icon-size / 2, 2) + pow($icon-size / 2, 2));
+
+		@include transition(all 300ms ease);
+		//@include transform(scale(0.73, 0.73) rotate(45deg));
+		@include rotate(45deg);
+		content: "";
+		display: block;
+		position: absolute;
+		left: calc(50% - #{$size / 2});
+		top: calc(50% - #{$size / 2});
+		width: $size;
+		height: $size;
+		z-index: -1;
+		background-color: lighten($param_icon-background, 10%);
+	}
+}
+
+.icon {
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+//--- PLACEHOLDERS -----------------------------------------------------//
+
+%icon--invert {
+	color: $color_white;
+	&::before {
+		@include transform(scale(1, 1) rotate(-45deg));
+		background-color: lighten($param_icon-background, 25%);
+	}
+}
+
+%icon--active {
+	&::before {
+		@include transform(scale(0.8, 0.8) rotate(45deg));
+	}
+}
+
+//--- ELEMENTS -----------------------------------------------------//
+
+.icon__inner {
+
+}
+
+//--- MODIFIERS -----------------------------------------------------//
+
+
+
+
+//--- MEDIA QUERRIES ----------------------------------------------------------//
+

@@ -1,0 +1,65 @@
+
+@font-face {
+	font-family: 'FontIcomoon';
+	src: url('/fonts/icomoon.eot?');
+	src: url('/fonts/icomoon.eot?#iefix') format('embedded-opentype'),
+	url('/fonts/icomoon.woff?') format('woff'),
+	url('/fonts/icomoon.ttf?') format('truetype'),
+	url('/fonts/icomoon.svg?#fonticomoon') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
+[class^="icomoon--"],
+[class*=" icomoon--"] {
+	display: inline-block;
+	font-family: FontIcomoon;
+	font-style: normal;
+	font-weight: normal;
+	//line-height: 1;
+	line-height: inherit;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	&:before {
+		display: block;
+		font-family: inherit;
+		font-weight: inherit;
+	}
+}
+
+.icomoon--attach {
+	font-size: 40px;
+	position: absolute;
+	bottom: 20px;
+	left: calc(50% - 20px);
+	text-decoration: none;
+	text-align: center;
+	z-index: 2;
+}
+
+
+.icomoon--instagram:before {
+	content: "\e605";
+}
+
+.icomoon--arrow:before {
+	content: "\e600";
+}
+
+.icomoon--facebook:before {
+	content: "\e601";
+}
+
+.icomoon--logo:before {
+	content: "\e602";
+}
+
+.icomoon--twitter:before {
+	content: "\e603";
+}
+
+.icomoon--vimeo:before {
+	content: "\e604";
+}
+

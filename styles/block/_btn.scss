@@ -1,0 +1,120 @@
+
+// PARAMETERS
+
+$param_btn-background: #000 !default;
+$param_btn-active-background: #222 !default;
+$param_btn-color: #fff !default;
+$param_btn-font: inherit !default;
+$param_btn-font-size: inherit !default;
+$param_btn-font-weíght: 700 !default;
+
+// BLOCK
+
+.btn {
+	//@include fontSize(eta, 0);
+	border-radius: 500px;
+	color: $param_btn-color;
+	background-color: $param_btn-background;
+	background-repeat: no-repeat;
+	text-align: center;
+	padding: 15px 35px;
+	line-height: inherit;
+	font-family: $param_btn-font;
+	font-weight: $param_btn-font-weíght;
+	font-size: $param_btn-font-size;
+	&:focus,
+	&:hover {
+		background-color: lighten($param_btn-background, 5%);
+	}
+	&:active {
+		background-color: $param_btn-background;
+	}
+	& + & {
+		//margin-left: 5px;
+	}
+	// Nested btn in btn
+	& > & {
+		width: auto;
+		display: inline-block;
+		& + .btn {
+			margin-left: 5px;
+		}
+	}
+}
+
+.btn,
+.btn__text,
+.btn__icon {
+	box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+}
+
+//--- ELEMENTS -----------------------------------------------------//
+
+.btn__text {
+	//display: inline-block;
+	//padding: 14px 16px;
+}
+
+.btn__icon {
+
+}
+
+//--- MODIFIERS -----------------------------------------------------//
+
+.btn--stretch {
+	width: 100%;
+	display: block;
+}
+
+// Themes
+
+.btn--white {
+	background-color: $color_white;
+	color: $color_matgrey;
+	box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.4);
+	&:focus,
+	&:hover {
+		background-color: darken($color_white, 5%);
+	}
+	&:active {
+		background-color: darken($color_white, 10%);;
+	}
+	&.btn--active {
+
+	}
+}
+
+
+// Sizes
+
+.btn--size-xs {
+
+}
+
+.btn--size-s {
+
+}
+
+.btn--active {
+	background-color: $param_btn-active-background;
+}
+
+.btn--group {
+	background-color: transparent;
+	&:focus,
+	&:hover {
+		background-color: transparent;
+	}
+}
+
+
+//--- MEDIA QUERRIES ----------------------------------------------------------//
+
+@include mediaQueries('x-small') {
+	.btn {
+		@include fontSize(delta, 0);
+		padding: 12px 10px;
+	}
+}

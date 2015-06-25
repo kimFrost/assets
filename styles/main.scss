@@ -1,0 +1,55 @@
+// -------------------------------------------------------------------------
+// Configuratios, imports & modules
+// -------------------------------------------------------------------------
+
+
+/* Sprite Setup */
+$spr-layout:smart;
+
+//@import "icons/*.png";
+//@import "util/*.png";
+
+
+// -------------------------------------------------------------------------
+// Variables
+// -------------------------------------------------------------------------
+
+
+// -------------------------------------------------------------------------
+// Imports
+// -------------------------------------------------------------------------
+
+// Global
+@import "global/_global_webfonts";
+@import "global/_global_mediaqueries";
+@import "global/_global_variables";
+@import "global/_global_fonts";
+@import "global/_global_mixins";
+
+
+// Bootstrap
+@import "vendor/_bootstrap";
+
+// Bootstrap extensions/Overrides
+.container-fluid {
+	max-width: 1680px;
+	& + & {
+		margin-top: ($grid-gutter-width / 2);
+	}
+}
+
+
+
+// Block
+@import "block/_tingstrom";
+@import "block/_cta";
+@import "block/_ratio";
+@import "block/_btn";
+@import "block/_rte";
+
+
+// Vendor
+//@import "vendor/_vendor_boilerplate";
+@import "vendor/_vendor_pollutions";
+
+
