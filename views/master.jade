@@ -1,65 +1,221 @@
-doctype html
-html(data-ng-app="noerd.Tingstrom.Web", lang="da")
+- var tableBase = width="100%", cellspacing="0", cellpadding="0", border="0;
+- var tableStyle = 'font-family: Verdana, Arial, Helvetica, sans-serif;'
+
+
+
+
+
+doctype transitional
+html
 	head
-		title Tingstr�m
-		meta(charset="UTF-8")
-		//meta(name="viewport", content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1 user-scalable=no")
-		meta(name="viewport", content="width=device-width, initial-scale=1")
-		link(rel='stylesheet', href='/css/main.css')
-		//link(rel='stylesheet', href='http://fonts.googleapis.com/css?family=Montserrat:400,700')
-
-		link(type="text/css", rel="stylesheet", href="http://fast.fonts.net/cssapi/026a1b64-c6a9-4e99-89b9-c5fffea6576c.css")
-
-		// Main app js
-		script(src="/assets/bower_components/angular/angular.js")
-		//script(src="/assets/bower_components/angular-sanitize/angular-sanitize.js")
-		script(src="/assets/bower_components/angular-cookies/angular-cookies.js")
-		//script(src="/assets/bower_components/ng-file-upload/angular-file-upload.js")
-		//script(src="/assets/bower_components/ng-html-compile/src/ngHtmlCompile.js")
-		//script(src="/assets/bower_components/ng-html-compile/src/ngHtmlCompile.js")
-
+		meta(http-equiv="Content-Type", content="text/html; charset=UTF-8")
+		title=Urtekram
 		block head
-		// Fonts
+		style.
+			html,body {
+				background-color: #252425;
+			}
+			body {
+				margin: 0;
+			}
+			img {
+				display: block;
+				margin: 0;
+				border: none;
+			}
+			a {
+				border: none;
+			}
+			p {
+				font-size: 12px;
+			}
+			h1, h2, h3, h4 {
+				font-size: 18px;
+			}
+			h1, h2, h3, h4, p {
+				margin-top: 0;
+				font-weight: normal;
+			}
+			td {
+				font-family: Verdana, Arial, Helvetica, sans-serif;
+			}
+	body
+		table(width="100%", cellspacing="0", cellpadding="0", border="0", style=#{tableStyle})
+			tbody
+				// upperHeader
 
-	body.tingstrom(data-ng-controller="MainCtrl as main")
+				tr
+					td(bgcolor="#030303", width="100%")
+						table(width="680", align="center", cellspacing="0", cellpadding="0", border="0")
+							tbody
+								tr
+									td(width="20", height="100%")
+									td(width="640")
+										table(width="640", align="center", cellspacing="0", cellpadding="0", border="0")
+											tbody
+												tr
+													td(height="3")
+												tr
+													td(align="center", valign="top", style="color: #919191")
+														a(href="*|ARCHIVE|*", style="color:#919191; font-size: 9px; text-decoration: none; display: block;", mc:edit="editor_upperheader_text")
+															| Har du problemer med at se indholdet, KLIK HER
+												tr
+													td(height="4")
+									td(width="20", height="100%")
+				// header
+				tr
+					td(bgcolor="#252425", width="100%", style="background-image:url(img/graphic_header_bg.jpg); background-position: center top; background-size:100% 100%; background-color:#252425;")
+						table(width="680", align="center", cellspacing="0", cellpadding="0", border="0")
+							tbody
+								tr
+									td(width="20", height="100%")
+									td(width="640")
+										table(width="640", align="center", cellspacing="0", cellpadding="0", border="0")
+											tbody
+												tr
+													td(align="left", height="150", style="color:#fff;")
+														a(href="http://www.urtekram.dk")
+															img(src="img/graphic_header_logo.png", mc:edit="editor_header_logo")
+													td(align="center", height="150", style="color:#fff;")
+														a(href="http://www.facebook.com/urtekram")
+															img(src="img/graphic_header_facebook.png", mc:edit="editor_header_facebook")
+									td(width="20", height="100%")
+				tr
+					td(width="100%", height="11", style="background-image:url(img/graphic_header_bg_transition.png); background-repeat:repeat-x; background-color: #C6AC89;")
+				// news
+				tr
+					td(bgcolor="#c6ac89", width="100%")
+						table(width="680", align="center", cellspacing="0", cellpadding="0", border="0")
+							tbody
+								tr
+									td(width="20", height="100%")
+									td(width="640")
+										table(width="640", align="center", cellspacing="0", cellpadding="0", border="0")
+											tbody
+												block newsContent
+									td(width="20", height="100%")
+				// products
+				tr(mc:hideable)
+					td(bgcolor="#c6ac89", width="100%")
+						table(width="680", align="center", cellspacing="0", cellpadding="0", border="0")
+							tbody
+								tr
+									td(width="20", height="100%")
+									td(width="640")
+										table(width="640", align="center", cellspacing="0", cellpadding="0", border="0")
+											tbody
+												block productsContent
+									td(width="20", height="100%")
+				tr(mc:hideable)
+					td(bgcolor="#c6ac89", width="100%", height="30")
+				// blog posts
+				tr
+					td(width="100%")
+						table(width="100%", align="center", cellspacing="0", cellpadding="0", border="0")
+							tbody
+								tr(mc:hideable)
+									td(colspan="3")
+										table(width="100%", align="center", cellspacing="0", cellpadding="0", border="0")
+											tbody
+												tr
+													td(width="100%", height="30", colspan="3", style="background-image:url(img/graphic_bg_transition_01.png); background-repeat:repeat-x; background-color: #C6AC89;")
+												tr
+													td(bgcolor="#f7f7f7", width="100%", height="30", colspan="3")
+								tr
+									td(bgcolor="#f7f7f7", width="100%", colspan="3")
+										table(width="640", align="center", cellspacing="0", cellpadding="0", border="0")
+											tbody
+												tr
+													td(width="640")
+														table(width="640", align="center", cellspacing="0", cellpadding="0", border="0")
+															tbody
+																block blogContent
+								tr(mc:hideable)
+									td(colspan="3")
+										table(width="100%", align="center", cellspacing="0", cellpadding="0", border="0")
+											tr
+												td(bgcolor="#f7f7f7", width="100%", height="30", colspan="3")
+											tr
+												td(width="100%", height="31", colspan="3", style="background-image:url(img/graphic_bg_transition_02.png); background-repeat:repeat-x; background-color: #C6AC89;")
+											tr
+												td(bgcolor="#c6ac89", width="100%", height="30", colspan="3")
+				// recipes
+				tr
+					td(bgcolor="#c6ac89", width="100%")
+						table(width="680", align="center", cellspacing="0", cellpadding="0", border="0")
+							tbody
+								tr
+									td(width="20", height="100%")
+									td(width="640")
+										table(width="640", align="center", cellspacing="0", cellpadding="0", border="0")
+											tbody
+												block recipeContent
+									td(width="20", height="100%")
 
 
-		block body
-
-		block glovalVars
-
-
-		header.tingstrom__header(data-ng-class="{'tingstrom__header--collapse': main.states.collapseHeader}")
-			a.tingstrom__logo
-			div.tingstrom__primnav
-				a Services
-				a Om os
-				a Kunder
-				a Nyheder
-				a Inspiration
-				a Kontakt
-
-		div.tingstrom__border
-
-
-		block content
-
-
-
-		footer.container-fluid
-			div.tingstrom__footer
-				img(src="http://placehold.it/100x100")
-				img(src="http://placehold.it/100x100")
-				img(src="http://placehold.it/100x100")
-				img(src="http://placehold.it/100x100")
-				img(src="http://placehold.it/100x100")
-				img(src="http://placehold.it/100x100")
-				img(src="http://placehold.it/100x100")
-				img(src="http://placehold.it/100x100")
-
+				// Competition posts
+				tr
+					td(width="100%")
+						table(width="100%", align="center", cellspacing="0", cellpadding="0", border="0")
+							tbody
+								tr(mc:hideable)
+									td(colspan="3")
+										table(width="100%", align="center", cellspacing="0", cellpadding="0", border="0")
+											tbody
+												tr
+													td(width="100%", height="30", colspan="3", style="background-image:url(img/graphic_bg_transition_01.png); background-repeat:repeat-x; background-color: #C6AC89;")
+												tr
+													td(bgcolor="#f7f7f7", width="100%", height="30", colspan="3")
+								tr
+									td(bgcolor="#f7f7f7", width="100%", colspan="3")
+										table(width="640", align="center", cellspacing="0", cellpadding="0", border="0")
+											tbody
+												tr
+													td(width="640")
+														table(width="640", align="center", cellspacing="0", cellpadding="0", border="0")
+															tbody
+																block competitionContent
+								tr(mc:hideable)
+									td(colspan="3")
+										table(width="100%", align="center", cellspacing="0", cellpadding="0", border="0")
+											tr
+												td(bgcolor="#f7f7f7", width="100%", height="30", colspan="3")
+											tr
+												td(width="100%", height="31", colspan="3", style="background-image:url(img/graphic_bg_transition_02.png); background-repeat:repeat-x; background-color: #C6AC89;")
+											tr
+												td(bgcolor="#c6ac89", width="100%", height="30", colspan="3")
 
 
-		script(src="/assets/scripts/app.js")
-		script(src="/assets/scripts/controllers/main.controller.js")
-		//script(src="/assets/scripts/directives/map.directive.js")
-		//script(src="/assets/scripts/directives/validfile.directive.js")
+
+				// footer
+				tr
+					td(width="100%", height="11", style="background-image:url(img/graphic_footer_bg_transition.png); background-repeat:repeat-x; background-color: #C6AC89;")
+				tr
+					td(bgcolor="#232223", width="100%", style="font-size: 10px; color: #fff; background-image:url(img/graphic_footer_bg.jpg); background-position: center top; background-size:100% 100%; background-color:#232223;")
+						table(width="680", align="center", cellspacing="0", cellpadding="0", border="0")
+							tbody
+								tr
+									td(width="20", height="100%")
+									td(width="640")
+										table(width="640", align="center", cellspacing="0", cellpadding="0", border="0")
+											tbody
+												block footerContent
+									td(width="20", height="100%")
+				tr
+					td(bgcolor="#232223", width="100%", style="font-size: 10px; color: #fff; background-image:url(img/graphic_footer_bg.jpg); background-position: center top; background-size:100% 100%; background-color:#232223;")
+						table(width="680", align="center", cellspacing="0", cellpadding="0", border="0")
+							tbody
+								tr
+									td(width="20", height="100%")
+									td(width="640")
+										table(width="640", align="center", cellspacing="0", cellpadding="0", border="0")
+											tbody
+												tr
+													td(style="text-align:center; font-size: 12px;", mc:edit="editor_footer_unsub")
+														| Hvis du ikke ønsker at modtage nyhedsmails mere, så klik&nbsp;
+														a(href="*|UNSUB|*", style="color: #ffffff; font-size: 12px;") her
+												tr
+													td(width="100%", height="20")
+									td(width="20", height="100%")
+
+

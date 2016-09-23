@@ -1,96 +1,242 @@
-
 extends ../master
 
-block append head
-
-block append body
-
-block append content
-
-	section.container-fluid
-		div.ratio.ratio--3-1
-			div.cta.cta--align-left.cta--dark(style="background-image:url('/images/content/splash1.jpg')")
-				div.rte
-					p Uden mad og drikke duer medarbejderen ikke!
 
 
-	section.container-fluid
-		div.cta.cta--wall
-			div.rte
-				h2 Velkommen hos Claus Tingstrøm A/S
-				p Med Claus Tingstrøm A/S som samarbejdspartner kan jeres kantine udvikle sig i takt med virksomheden. Vores økonomistyring er præcis og vi holder vores aftaler – også dét, der står mellem linjerne!
-				p Venlig hilsen Claus Tingstrøm, Adm. direktør
-				img(src="/images/content/signature.png")
-
-	section.container-fluid
-		div.cta.cta--dark(style="background-image:url('/images/content/splash2.jpg')")
-			div.rte
-				h2 Bon Appétit til ORBICON
-				p Vi er stolte af at kunne byde ORBICON velbekommen som ny kunde hos Tingstrøm. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod 3000 ansatte dagligt tempor incididunt ut labore et dolore magna aliqua.
-				a.btn.btn--white Se mere
-
-
-	section.container-fluid
-		div.row
-			div.col-md-6
-				div.cta.cta--peach
-					div.rte
-						h2 Tingstrøm klarer ærterne
-						p Tingstrøm sørger for alt din virksomhed skal bruge for at sikre dine medarbejdere et sundt og nærende måltid. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.
-						a.btn.btn--white Se mere
-			div.col-md-6
-				div.cta(style="background-image:url('/images/content/box1.jpg')")
-
-
-	section.container-fluid
-		div.cta.cta--wall
-			div.rte
-				h2 Hej Tingstrøm
-				p
-					| Mit navn er indtast dit navn og
-					br
-					| jeg vil gerne vælg emne
-				a.btn ->
-
-
-	section.container-fluid
-		div.row
-			div.col-md-6
-				div.cta.cta--coral
-					div.rte
-						h2 Hvad vil I ha’ at spise?
-						p Kunders behov er forskellige, så det er menuerne også. I alle tilfælde garanterer vi et sundt og varieret måltid med lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna.
-						a.btn.btn--white Se eksempler
-			div.col-md-6
-				div.cta(style="background-image:url('/images/content/box2.jpg')")
-
-
-	section.container-fluid
-		div.cta.cta--wall
-			div.col-md-12
-				div.rte
-					h2 Endelig har vi fået en cateringløsning der både lorem ipsum dolor sit amet økonomi, consectetur adipisicing elit, sed do glade maver incididunt ut labore et dolore magna aliqua.
-					p Martin Withus, Adm. direktør, NöRD ApS
+block append newsContent
+	tr
+		td(height="20")
+	tr(mc:hideable)
+		td
+			img(src="img/headline_welcome.png", mc:edit="editor_headline_welcome_image")
+	tr
+		td
+			img(src="img/spacer_dotted.png")
+	tr
+		td(height="15")
+	tr(mc:repeatable="editor_repeat_content_post", mc:variant="contentType1")
+		td
+			table(width="100%", cellspacing="0", cellpadding="0", border="0")
+				tbody
+					tr
+						td
+							table(width="100%", cellspacing="0", cellpadding="0", border="0")
+								tbody
+									tr
+										td(valign="top")
+											img(src="img/content_img_01.jpg", mc:edit="editor_content1_image")
+										td(width="30")
+										td(valign="top", style="font-size: 12px; color:#000; background-color: #c6ac89;")
+											h2(style="font-size: 18px;color:#262526;margin-top: 10px;")
+												span(mc:edit="editor_content1_headline") Hovednyhedens omrÃ¥de
+											div(mc:edit="editor_content1_body")
+												p
+													| Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi commodo, ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio lorem non turpis. Nullam sit amet enim. Suspendisse id velit vitae ligula volutpat condimentum. Aliquam erat volutpat. Sed quis velit. Nulla facilisi. Nulla libero. Vivamus pharetra posuere sapien. Nam consectetuer. Sed aliquam, nunc eget euismod ullamcorper, lectus nunc ullamcorper orci, fermentum bibendum enim nibh eget ipsum. Donec porttitor ligula eu dolor. Maecenas vitae nulla consequat libero cursus venenatis. Nam magna enim, accumsan eu, blandit sed, blandit a, eros.
+												p
+													| Quisque facilisis erat a dui. Nam malesuada ornare dolor. Cras gravida, diam sit amet rhoncus ornare, erat elit consectetuer erat, id egestas pede nibh eget odio. Proin tincidunt, velit vel porta elementum.
+					tr
+						td(width="100%", height="40")
+	tr(mc:repeatable="editor_repeat_content_post", mc:variant="contentType2")
+		td
+			table(width="100%", cellspacing="0", cellpadding="0", border="0")
+				tbody
+					tr
+						td
+							table(width="100%", cellspacing="0", cellpadding="0", border="0")
+								tbody
+									tr
+										td(valign="top", style="font-size: 12px; color:#000; background-color: #c6ac89;")
+											h2(style="font-size: 18px; color:#262526; margin-top:10px;")
+												span(mc:edit="editor_content2_headline") Hovednyhedens omrÃ¥de
+											div(mc:edit="editor_content2_body")
+												p
+													| Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi commodo, ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio lorem non turpis. Nullam sit amet enim. Suspendisse id velit vitae ligula volutpat condimentum. Aliquam erat volutpat. Sed quis velit. Nulla facilisi. Nulla libero. Vivamus pharetra posuere sapien. Nam consectetuer. Sed aliquam, nunc eget euismod ullamcorper, lectus nunc ullamcorper orci, fermentum bibendum enim nibh eget ipsum. Donec porttitor ligula eu dolor. Maecenas vitae nulla consequat libero cursus venenatis. Nam magna enim, accumsan eu, blandit sed, blandit a, eros.
+												p
+													| Quisque facilisis erat a dui. Nam malesuada ornare dolor. Cras gravida, diam sit amet rhoncus ornare, erat elit consectetuer erat, id egestas pede nibh eget odio. Proin tincidunt, velit vel porta elementum.
+										td(width="30")
+										td(valign="top")
+											img(src="img/content_img_02.jpg", mc:edit="editor_content2_image")
+					tr
+						td(width="100%", height="50")
 
 
-	section.container-fluid
-		div.row
-			div.col-md-6
-				div.cta(style="background-image:url('/images/content/box3.jpg')")
-			div.col-md-6
-				div.cta.cta--peach
-					div.rte
-						h2 Mad med holdning
-						p Lorem ipsum dolor sit bæredygtig amet, consectetur adipisicing økologisk elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud samfundsansvar exercitation.
-						a.btn.btn--white Se vores kodekser
+
+block append productsContent
+	tr
+		td
+			img(src="img/headline_products.png", mc:edit="editor_headline_products_image")
+	tr
+		td
+			img(src="img/spacer_dotted.png")
+	tr
+		td
+			table(width="100%", cellspacing="0", cellpadding="0", border="0", style="font-size: 12px; text-align: center;")
+				tbody
+					tr
+						- for (var i = 1; i < 5; i++)
+							td
+								a(href="#", style="color: #000;")
+									table(width="100%", cellspacing="0", cellpadding="0", border="0")
+										tbody
+											tr
+												td
+													img(src="img/content_product_01.jpg", mc:edit="editor_product#{i}_image")
+											tr
+												td(style="font-size: 12px; background-color: #c6ac89", mc:edit="editor_product#{i}_text") Lorem ipsum dolor sit met, consectetuer. ipiscing elit.
+
+block append blogContent
+	tr
+		td
+			table(width="100%", cellspacing="0", cellpadding="0", border="0", mc:hideable)
+				tbody
+					tr
+						td
+							img(src="img/headline_blog.png", mc:edit="editor_headline_blog_image")
+					tr
+						td
+							img(src="img/spacer_dotted.png")
+					tr
+						td(height="15")
+	tr
+		td
+			table(width="100%", cellspacing="0", cellpadding="0", border="0", style="font-size: 12px; text-align: left;")
+				tbody
+					// mc:repeatable
+					- for (var i = 1; i < 2; i++)
+						tr(mc:repeatable="editor_repeat_blog_post")
+							td
+								table
+									tbody
+										tr
+											td(valign="top", align="left", width="165")
+												img(src="img/content_blog_01.jpg", mc:edit="editor_repeat_blog_post_image")
+											td(width="20")
+											td(valign="top", align="left", style="color: #000;")
+												h2(style="margin-bottom: 3px; font-size: 18px; font-weight:normal; margin-top:5px; color:#262526; background-color:#f7f7f7", mc:edit="editor_repeat_blog_post_headline") Amet dolar 0sit lorem amet dolar lorem
+												p(style="font-size: 10px; background-color: #f7f7f7", mc:edit="editor_repeat_blog_post_writer")
+													| Udgivet den 3. december 2013 af
+													a(style="color: #8b7250;")  Jeanette
+												p(style="font-size: 12px; background-color: #f7f7f7", mc:edit="editor_repeat_blog_post_content") Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi commodo, ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio lorem non turpis. Nullam sit amet enim. Suspendisse id velit vitae ligula volutpat condimentum. Aliquam erat volutpat. Sed quis velit. Nulla facilisi. Nulla libero. Vivamus pharetra posuere sapien. Nam consectetuer. Sed aliquam, nunc eget euismod ullamcorper, lectus nunc ullamcorper orci, fermentum bibendum enim nibh eget ipsum. Donec porttitor ligula eu dolor.
+												p
+													div(mc:edit="editor_blog_link")
+														a(href="#")
+															img(src="img/graphic_readmore.png")
+										tr
+											td(height="30", colspan="3")
+
+block append recipeContent
+	tr
+		td
+			table(width="100%", cellspacing="0", cellpadding="0", border="0", mc:hideable)
+				tbody
+					tr
+						td
+							img(src="img/headline_recipes.png", mc:edit="editor_headline_recipes_image")
+					tr
+						td
+							img(src="img/spacer_dotted.png")
+	tr
+		td
+			table(width="100%", cellspacing="0", cellpadding="0", border="0", style="font-size: 12px; text-align: left;")
+				tbody
+					// mc:repeatable
+					- for (var i = 1; i < 2; i++)
+						tr(mc:repeatable="editor_repeat_recipe_post")
+							td
+								table
+									tbody
+										tr
+											td(colspan="3", height="20")
+										tr
+											td(colspan="3", align="left", style="background-color: #c6ac89")
+												h2(style="font-size: 18px;margin-bottom: 5px;", mc:edit="editor_repeat_recipe_headline") Knasende lakridsristede speltflager med blÃ¥ kornblomster
+													span(style="font-size: 12px;") (4 pers.)
+												p(mc:edit="editor_repeat_recipe_writer") Opskrift af: Personens navn
+										tr
+											td(colspan="3", height="10")
+										tr
+											td(width="294", valign="top")
+												img(src="img/content_recipe_01.jpg", mc:edit="editor_repeat_recipe_image")
+											td(width="20")
+											td(style="font-size: 12px; background-color: #c6ac89", mc:edit="editor_repeat_recipe_content")
+												h2 Om opskriften
+												p Denne portion er nok til mange forskellige sommerdesserter. Det ristede knas er velegnet til drys pÃ¥ hjemmebagte kager og desserter, yoghurt eller koldskÃ¥l.
+												br
+
+												h2 Ingredienser
+												p
+													| 500 g Ã¸kologisk speltflager*
+													br
+													| 150 g Ã¸kologisk blomsterhonning*
+													br
+													| 50 g Ã¸kologisk rÃ¥lakridspulver*
+													br
+													| 150 g hakkede og ristede Ã¸kologiske hasselnÃ¸ddekerner*
+													br
+													| 25 g tÃ¸rrede blÃ¥ kornblomster
+													br
+													| * = Urtekram produkter
+
+												h2 FramgangsmÃ¥de
+												p Varm honning og rÃ¥lakrids i en lille gryde. Bland speltflager grundigt med det lune honning og lakrids. Rist blandingen ved 150 gradet til flangerne er gyldne og sprÃ¸de. Lad kÃ¸le helt ned og rÃ¸r i blandingen under vejs sÃ¥ de ikke klister sammen. Bland med hasselnÃ¸dder og blÃ¥ kornblomst. Opbevar i et lufttÃ¦t glas.
+												p Denne skÃ¸nne knas kan holde i et par mÃ¥neder - men det fÃ¥r den ikke lov til ;-)
+										tr
+											td(colspan="3", height="30")
+					tr
+						td(align="center",colspan="3")
+							div(mc:edit="editor_recipe_link", style="background-color: #c6ac89")
+								a(href="http://urtekram.dk/opskrifter/retter/alle", target="_blank")
+									img(src="img/graphic_readmore2.png")
+					tr
+						td(colspan="3", height="20")
 
 
-	section.container-fluid
-		div.cta.cta--align-left(style="background-image:url('/images/content/pattern-02.jpg')")
-			div.row
-				div.col-md-6
-					div.cta
-						div.rte
-							h2 Lad os hjælpe jer
-							p Hvis I vil give jeres kantineløsning et grundigt eftersyn, så ring eller skriv. Det koster ingenting - bortset fra en kop kaffe. Vi tager naturligvis hjemmebagte småkager med!
-							a.btn Kontakt Tingstrøm
+block append competitionContent
+	tr
+		td
+			table(width="100%", cellspacing="0", cellpadding="0", border="0", mc:hideable)
+				tbody
+					tr
+						td
+							img(src="img/headline_competition.png", mc:edit="editor_headline_competition_image")
+					tr
+						td
+							img(src="img/spacer_dotted.png")
+					tr
+						td(height="15")
+	tr
+		td
+			table(width="100%", cellspacing="0", cellpadding="0", border="0", style="font-size: 12px; text-align: left;")
+				tbody
+					// mc:repeatable
+					- for (var i = 1; i < 2; i++)
+						tr(mc:repeatable="editor_repeat_competition_post")
+							td
+								table
+									tbody
+										tr
+											td(valign="top", align="left", width="165")
+												img(src="img/content_blog_01.jpg", mc:edit="editor_repeat_competition_post_image")
+											td(width="20")
+											td(valign="top", align="left", style="color: #000;")
+												h2(style="margin-bottom: 3px; font-size: 18px; font-weight:normal; margin-top:5px; color:#262526; background-color:#f7f7f7", mc:edit="editor_repeat_competition_post_headline") Amet dolar 0sit lorem amet dolar lorem
+												p(style="font-size: 12px; background-color: #f7f7f7", mc:edit="editor_repeat_competition_post_content") Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi commodo, ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio lorem non turpis. Nullam sit amet enim. Suspendisse id velit vitae ligula volutpat condimentum. Aliquam erat volutpat. Sed quis velit. Nulla facilisi. Nulla libero. Vivamus pharetra posuere sapien. Nam consectetuer. Sed aliquam, nunc eget euismod ullamcorper, lectus nunc ullamcorper orci, fermentum bibendum enim nibh eget ipsum. Donec porttitor ligula eu dolor.
+												p
+													div(mc:edit="editor_competition_link")
+														a(href="#")
+															img(src="img/graphic_participate.png")
+										tr
+											td(height="30", colspan="3")
+
+
+block append footerContent
+	tr
+		td(width="100%", height="20")
+	tr
+		td(align="center", style="font-size: 12px;", mc:edit="editor_footer_line1") Copyright Urtekram 2014
+	tr
+		td(width="100%", height="20")
+	//tr
+		td(align="center")
+			a(href="#", style="text-decoration:underline;color: #ffffff; font-size: 10px;", mc:edit="editor_footer_line2") Tilmeld/frameld urtekram nyhedsbrev
+	//tr
+		td(width="100%", height="20")
