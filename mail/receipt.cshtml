@@ -1,0 +1,345 @@
+﻿@using System.Globalization
+@using Core.Models.Commerce.Basket
+@using RazorEngine
+@inherits RazorEngine.Templating.TemplateBase<Core.Models.Commerce.Orders.Model.OrderReceipt>
+@helper DisplayPriceCell(LineItem item, bool total)
+{
+    string unitText = total ? "" : string.Format("{0} {1}", Model.Labels.PerUnit, item.Unit);
+    if (item is LineItemWithNormalPrice)
+    {
+        <p style="margin: 0; padding: 0; font-weight: normal; color: #848484">
+            @Model.Labels.NormalPriceLabel @unitText<br>@DisplayLineItemUnitPrice(item, total)
+        </p>
+    }
+    else if (item is LineItemWithDiscountPrice)
+    {
+        <p style="margin: 0; padding: 0; font-weight: normal;">
+            <b style="color: #848484">@Model.Labels.DiscountPriceLabel @unitText</b><br><span style="color: #FE8E1D">@DisplayLineItemUnitPrice(item, total)</span>
+        </p>
+    }
+    else if (item is LineItemWithMemberPrice)
+    {
+        <p style="margin: 0; padding: 0; font-weight: normal;">
+            <b style="color: #848484">@Model.Labels.MemberPriceLabel @unitText</b><br><span style="color: #FE8E1D">@DisplayLineItemUnitPrice(item, total)</span>
+        </p>
+    }
+
+}
+@helper DisplayLineItemUnitPrice(LineItem item, bool total, bool withCurrency = true)
+{
+    decimal price = 0;
+
+    if (item is LineItemWithDiscountPrice)
+    {
+        var discountItem = (LineItemWithDiscountPrice)item;
+        price = total ? discountItem.DiscountPriceTotal : discountItem.DiscountPriceUnit;
+    }
+    else if (item is LineItemWithNormalPrice)
+    {
+        var normalItem = (LineItemWithNormalPrice)item;
+        price = total ? normalItem.NormalPriceTotal : normalItem.NormalPriceUnit;
+    }
+    else if (item is LineItemWithMemberPrice)
+    {
+        var memberItem = (LineItemWithMemberPrice)item;
+        price = total ? memberItem.MemberPriceTotal : memberItem.MemberPriceUnit;
+    }
+    @DisplayPrice(price, withCurrency);
+}
+
+@helper DisplayPrice(decimal price, bool withCurrency = true)
+{
+    if (price == 0)
+    {
+        <span>@Model.Labels.FreePriceLabel</span>
+    }
+    else
+    {
+        var cultureInfo = new CultureInfo("da-DK");
+        @(withCurrency ?
+        string.Format(cultureInfo, "{0:F2} {1}", price, Model.Order.Basket.ValutaName) :
+        string.Format(cultureInfo, "{0:F2}", price))
+    }
+}
+
+<!DOCTYPE html>
+<html lang="da">
+<head>
+    <title>Silvan</title>
+    <meta charset="UTF-8">
+</head>
+<body style="margin:0; background-color:#F4F3F2; color:#474747">
+    <table width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#F4F3F2"
+           style="color:#474747; font-family:Verdana,Arial,Helvetica,sans-serif;">
+        <tbody>
+            <tr>
+                <td>
+                    <table width="600" bgcolor="#F4F3F2" align="center" cellspacing="0" cellpadding="0" border="0"
+                           style="min-width: 600px; width: 100%; font-size: 16px; line-height: 1; font-weight: normal; font-family: Lato, Trebuchet MS, Sans-Serif;">
+                        <tbody>
+                            <tr>
+                                <td colspan="3" height="20"></td>
+                            </tr>
+                            <tr>
+                                <td width="20" height="100%"></td>
+                                <td>
+                                    <table width="100%" cellspacing="0" cellpadding="0" border="0"
+                                           style="font-size: 16px; line-height: 1; font-weight: normal; font-family: Lato, Trebuchet MS, Sans-Serif;">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="3">
+                                                    @if (!string.IsNullOrWhiteSpace(Model.ReceiptLogo))
+                                                    {
+                                                        <img src="@Model.ReceiptLogo" />
+                                                    }
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="80"></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3">
+                                                    <h1 style="margin:0; padding: 0; font-size: 24px; font-weight: normal; font-family: Merriweather, Georgia, Serif;">
+                                                        <b>@Model.ReceiptHeading</b>
+                                                    </h1><br>
+                                                    <p style="margin:0; padding: 0; font-weight: bold;">
+                                                        @{ WriteLiteral(Model.ReceiptTeaser); }
+                                                    </p>
+                                                    <p style="margin:0; padding: 0; font-weight: normal;">
+                                                        @{ WriteLiteral(Model.ReceiptBody); }
+                                                    </p>
+                                                    <br>
+                                                    <br>
+                                                    <p style="margin:0; padding: 0; font-weight: normal; font-size: 20px;">
+                                                        <b>@Model.Labels.Header</b>
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="10" width="100%"></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="1" width="100%" bgcolor="#D7D8D6"></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="10" width="100%"></td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top">
+                                                    <p style="margin:0; padding: 0; font-weight: normal;">
+                                                        <b>@Model.Labels.BillingAdressTitle</b><br>@Model.Order.BillingAddress.Fullname<br>@Model.Order.BillingAddress.AddressLine<br>@Model.Order.BillingAddress.ZipCode @Model.Order.BillingAddress.City
+                                                    </p>
+                                                </td>
+                                                <td width="20"></td>
+                                                <td valign="top">
+                                                    <p style="margin:0; padding: 0; font-weight: normal;">
+                                                        @if (!Model.IsPickup)
+                                                        {
+                                                            <b>@Model.Labels.DeliveryAdressTitle</b>
+                                                            <br>
+                                                            if (Model.IsDeliveryAddressSameAsBilling)
+                                                            {
+                                                                @Model.Labels.DeliveryTypeTextSameAsBilling
+                                                            }
+                                                            else
+                                                            {
+                                                                @Model.Order.DeliveryAddress.Fullname<br>
+                                                                @Model.Order.DeliveryAddress.AddressLine<br>
+                                                                @Model.Order.DeliveryAddress.ZipCode @Model.Order.DeliveryAddress.City<br>
+                                                            }
+                                                        }
+                                                        else
+                                                        {
+                                                            <b>@Model.Labels.PickupAdressTitle</b>
+                                                            <br>
+                                                            <span>SILVAN&nbsp;</span>@Model.Order.PickupAddress.Fullname<br>
+                                                            @Model.Order.PickupAddress.AddressLine<br>
+                                                            @Model.Order.PickupAddress.ZipCode @Model.Order.PickupAddress.City<br>
+                                                        }
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="10"></td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top">
+                                                    @if (!Model.IsPickup)
+                                                    {
+                                                        <p style="margin: 0; padding: 0; font-weight: normal;">
+                                                            <b>@Model.Labels.DeliveryTypeTitle</b><br>@Model.Order.Shipment.DeliveryTypeText<br>@Model.Labels.DeliveryTime: @Model.Order.Basket.DeliveryTimeTextLabel
+                                                        </p>
+                                                    }
+                                                    else
+                                                    {
+                                                        <p style="margin: 0; padding: 0; font-weight: normal;">
+                                                            <b>@Model.Labels.DeliveryTypeTitle</b><br>@Model.Order.Shipment.DeliveryTypeText<br><br>
+                                                        </p>
+                                                        <p style="margin: 0; padding: 0; font-weight: normal;">
+                                                            <b>@Model.Labels.DeliveryTime</b><br>@Model.Labels.PickupDeliveryTimeText
+                                                        </p>
+                                                    }
+                                                </td>
+                                                <td width="20"></td>
+                                                <td valign="top">
+                                                    <p style="margin:0; padding: 0; font-weight: normal;">
+                                                        <b>@Model.Labels.OrderDataHeader</b>
+                                                        @* <br>
+                                                            @Model.Labels.TransactionIdLabel: @Model.TransactionId *@
+                                                        <br>
+                                                        @Model.Labels.TrackingNumberLabel: @Model.WebOrderId
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="3" height="70"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                    <table width="100%" cellspacing="0" cellpadding="0" border="0"
+                                           style="font-size: 16px; line-height: 1; font-weight: normal; font-family: Lato, Trebuchet MS, Sans-Serif;">
+                                        <tbody>
+                                            <tr>
+                                                <td colspan="4"></td>
+                                                <td align="left">@Model.Labels.Price</td>
+                                                <td></td>
+                                                <td align="left">@Model.Labels.Amount</td>
+                                                <td></td>
+                                                <td align="right">@Model.Labels.Total</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="9" height="10" width="100%"></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="9" height="1" width="100%" bgcolor="#D7D8D6"></td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan="9" height="20" width="100%"></td>
+                                            </tr>
+                                            @foreach (var line in Model.Order.Basket.Items)
+                                            {
+                                                <tr>
+                                                    <td><a href="@line.ProductUrl"><img src="@line.ImageUrl"></a></td>
+                                                    <td width="20" height="100%"></td>
+                                                    <td>
+                                                        <h2 style="margin:0; padding: 0; font-size: 18px; font-weight: normal; font-family: Merriweather, Georgia, Serif;">
+                                                            <a style="color:#474747" href="@line.ProductUrl"><b>@line.ProductName</b></a>
+                                                        </h2>
+                                                        @if (line.VariantAttributes != null)
+                                                        {
+                                                            foreach (var variantAttr in line.VariantAttributes)
+                                                            {
+                                                                <p style="margin: 0; padding: 0; font-weight: normal; color: #848484">@variantAttr.Key: @variantAttr.Value</p>
+                                                            }
+                                                        }
+                                                    </td>
+                                                    <td width="20" height="100%"></td>
+                                                    <td>
+                                                        @DisplayPriceCell(line, false)
+                                                    </td>
+                                                    <td width="20" height="100%"></td>
+                                                    <td>
+                                                        <p style="margin: 0; padding: 0; font-weight: normal; color: #848484">@line.AmountInBasket @line.Unit</p>
+                                                    </td>
+                                                    <td width="20" height="100%"></td>
+                                                    <td align="right">
+                                                        @DisplayPriceCell(line, true)
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="9" height="20" width="100%"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="9" height="1" width="100%" bgcolor="#D7D8D6"></td>
+                                                </tr>
+                                                <tr>
+                                                    <td colspan="9" height="20" width="100%"></td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                    <table width="100%" cellspacing="0" cellpadding="0" border="0"
+                                           style="font-size: 16px; line-height: 1; font-weight: normal; font-family: Lato, Trebuchet MS, Sans-Serif;">
+                                        <tbody>
+                                            <tr>
+                                                <td width="50%"></td>
+                                                <td>
+                                                    <table width="100%" cellspacing="0" cellpadding="0" border="0"
+                                                           style="font-size: 16px; line-height: 1; font-weight: normal; font-family: Lato, Trebuchet MS, Sans-Serif;">
+                                                        <tbody>
+                                                            <tr>
+                                                                <td>@Model.Labels.Price</td>
+                                                                <td align="right">@DisplayPrice(Model.Order.Basket.LineItemTotalNormalPrice)</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2" height="10"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td>@Model.Labels.Freight</td>
+                                                                <td align="right">@DisplayPrice(Model.Order.Basket.Freight)</td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2" height="10"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2" height="1" bgcolor="#D7D8D6"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2" height="10"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td><b>@Model.Labels.TotalPriceInclVat</b></td>
+                                                                <td align="right"><b>@DisplayPrice(Model.Order.Basket.TotalNormalPrice)</b></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2" height="10"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2" height="1" bgcolor="#D7D8D6"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2" height="2"></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td colspan="2" height="1" bgcolor="#D7D8D6"></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </td>
+                                <td width="20" height="100%"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" height="100"></td>
+                            </tr>
+                            <tr>
+                                <td width="20" height="100%"></td>
+                                <td>
+                                    <table width="100%" cellspacing="0" cellpadding="0" border="0" style="font-size: 16px; line-height: 1; font-weight: normal; font-family: Lato, Trebuchet MS, Sans-Serif;">
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    @{ WriteLiteral(Model.TermsAndConditions); }
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                </td>
+                                <td width="20" height="100%"></td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" height="50"></td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
