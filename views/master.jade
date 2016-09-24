@@ -1,4 +1,6 @@
-- var tableBase = width="100%", cellspacing="0", cellpadding="0", border="0;
+- var bodyStyle = "margin:0; height: 100%; width: 100%; background-color:hotpink; color:#474747";
+
+- var tableBase ='width="100%", cellspacing="0", cellpadding="0", border="0';
 - var tableStyle = 'font-family: Verdana, Arial, Helvetica, sans-serif;'
 
 
@@ -7,215 +9,87 @@
 
 doctype transitional
 html
-	head
-		meta(http-equiv="Content-Type", content="text/html; charset=UTF-8")
-		title=Urtekram
-		block head
-		style.
-			html,body {
-				background-color: #252425;
-			}
-			body {
-				margin: 0;
-			}
-			img {
-				display: block;
-				margin: 0;
-				border: none;
-			}
-			a {
-				border: none;
-			}
-			p {
-				font-size: 12px;
-			}
-			h1, h2, h3, h4 {
-				font-size: 18px;
-			}
-			h1, h2, h3, h4, p {
-				margin-top: 0;
-				font-weight: normal;
-			}
-			td {
-				font-family: Verdana, Arial, Helvetica, sans-serif;
-			}
-	body
-		table(width="100%", cellspacing="0", cellpadding="0", border="0", style=#{tableStyle})
-			tbody
-				// upperHeader
+    head
+        meta(http-equiv="Content-Type", content="text/html; charset=UTF-8")
+        title=Urtekram
+        block head
+        style.
+            html, body {
+                #{bodyStyle}
+            }
 
-				tr
-					td(bgcolor="#030303", width="100%")
-						table(width="680", align="center", cellspacing="0", cellpadding="0", border="0")
-							tbody
-								tr
-									td(width="20", height="100%")
-									td(width="640")
-										table(width="640", align="center", cellspacing="0", cellpadding="0", border="0")
-											tbody
-												tr
-													td(height="3")
-												tr
-													td(align="center", valign="top", style="color: #919191")
-														a(href="*|ARCHIVE|*", style="color:#919191; font-size: 9px; text-decoration: none; display: block;", mc:edit="editor_upperheader_text")
-															| Har du problemer med at se indholdet, KLIK HER
-												tr
-													td(height="4")
-									td(width="20", height="100%")
-				// header
-				tr
-					td(bgcolor="#252425", width="100%", style="background-image:url(img/graphic_header_bg.jpg); background-position: center top; background-size:100% 100%; background-color:#252425;")
-						table(width="680", align="center", cellspacing="0", cellpadding="0", border="0")
-							tbody
-								tr
-									td(width="20", height="100%")
-									td(width="640")
-										table(width="640", align="center", cellspacing="0", cellpadding="0", border="0")
-											tbody
-												tr
-													td(align="left", height="150", style="color:#fff;")
-														a(href="http://www.urtekram.dk")
-															img(src="img/graphic_header_logo.png", mc:edit="editor_header_logo")
-													td(align="center", height="150", style="color:#fff;")
-														a(href="http://www.facebook.com/urtekram")
-															img(src="img/graphic_header_facebook.png", mc:edit="editor_header_facebook")
-									td(width="20", height="100%")
-				tr
-					td(width="100%", height="11", style="background-image:url(img/graphic_header_bg_transition.png); background-repeat:repeat-x; background-color: #C6AC89;")
-				// news
-				tr
-					td(bgcolor="#c6ac89", width="100%")
-						table(width="680", align="center", cellspacing="0", cellpadding="0", border="0")
-							tbody
-								tr
-									td(width="20", height="100%")
-									td(width="640")
-										table(width="640", align="center", cellspacing="0", cellpadding="0", border="0")
-											tbody
-												block newsContent
-									td(width="20", height="100%")
-				// products
-				tr(mc:hideable)
-					td(bgcolor="#c6ac89", width="100%")
-						table(width="680", align="center", cellspacing="0", cellpadding="0", border="0")
-							tbody
-								tr
-									td(width="20", height="100%")
-									td(width="640")
-										table(width="640", align="center", cellspacing="0", cellpadding="0", border="0")
-											tbody
-												block productsContent
-									td(width="20", height="100%")
-				tr(mc:hideable)
-					td(bgcolor="#c6ac89", width="100%", height="30")
-				// blog posts
-				tr
-					td(width="100%")
-						table(width="100%", align="center", cellspacing="0", cellpadding="0", border="0")
-							tbody
-								tr(mc:hideable)
-									td(colspan="3")
-										table(width="100%", align="center", cellspacing="0", cellpadding="0", border="0")
-											tbody
-												tr
-													td(width="100%", height="30", colspan="3", style="background-image:url(img/graphic_bg_transition_01.png); background-repeat:repeat-x; background-color: #C6AC89;")
-												tr
-													td(bgcolor="#f7f7f7", width="100%", height="30", colspan="3")
-								tr
-									td(bgcolor="#f7f7f7", width="100%", colspan="3")
-										table(width="640", align="center", cellspacing="0", cellpadding="0", border="0")
-											tbody
-												tr
-													td(width="640")
-														table(width="640", align="center", cellspacing="0", cellpadding="0", border="0")
-															tbody
-																block blogContent
-								tr(mc:hideable)
-									td(colspan="3")
-										table(width="100%", align="center", cellspacing="0", cellpadding="0", border="0")
-											tr
-												td(bgcolor="#f7f7f7", width="100%", height="30", colspan="3")
-											tr
-												td(width="100%", height="31", colspan="3", style="background-image:url(img/graphic_bg_transition_02.png); background-repeat:repeat-x; background-color: #C6AC89;")
-											tr
-												td(bgcolor="#c6ac89", width="100%", height="30", colspan="3")
-				// recipes
-				tr
-					td(bgcolor="#c6ac89", width="100%")
-						table(width="680", align="center", cellspacing="0", cellpadding="0", border="0")
-							tbody
-								tr
-									td(width="20", height="100%")
-									td(width="640")
-										table(width="640", align="center", cellspacing="0", cellpadding="0", border="0")
-											tbody
-												block recipeContent
-									td(width="20", height="100%")
+            img {
+                display: block;
+                margin: 0;
+                border: none;
+            }
+
+            a {
+                border: none;
+            }
+
+            p {
+                font-size: 12px;
+            }
+
+            h1, h2, h3, h4 {
+                font-size: 18px;
+            }
+
+            h1, h2, h3, h4, p {
+                margin-top: 0;
+                font-weight: normal;
+            }
+
+            td {
+                font-family: Verdana, Arial, Helvetica, sans-serif;
+            }
 
 
-				// Competition posts
-				tr
-					td(width="100%")
-						table(width="100%", align="center", cellspacing="0", cellpadding="0", border="0")
-							tbody
-								tr(mc:hideable)
-									td(colspan="3")
-										table(width="100%", align="center", cellspacing="0", cellpadding="0", border="0")
-											tbody
-												tr
-													td(width="100%", height="30", colspan="3", style="background-image:url(img/graphic_bg_transition_01.png); background-repeat:repeat-x; background-color: #C6AC89;")
-												tr
-													td(bgcolor="#f7f7f7", width="100%", height="30", colspan="3")
-								tr
-									td(bgcolor="#f7f7f7", width="100%", colspan="3")
-										table(width="640", align="center", cellspacing="0", cellpadding="0", border="0")
-											tbody
-												tr
-													td(width="640")
-														table(width="640", align="center", cellspacing="0", cellpadding="0", border="0")
-															tbody
-																block competitionContent
-								tr(mc:hideable)
-									td(colspan="3")
-										table(width="100%", align="center", cellspacing="0", cellpadding="0", border="0")
-											tr
-												td(bgcolor="#f7f7f7", width="100%", height="30", colspan="3")
-											tr
-												td(width="100%", height="31", colspan="3", style="background-image:url(img/graphic_bg_transition_02.png); background-repeat:repeat-x; background-color: #C6AC89;")
-											tr
-												td(bgcolor="#c6ac89", width="100%", height="30", colspan="3")
+    body(style="#{bodyStyle}")
+        table(width="100%", cellspacing="0", cellpadding="0", border="0", bgcolor="red", style="color:#474747; font-family:Verdana,Arial,Helvetica,sans-serif;")
+            tbody
+                tr
+                    td(height="50")
+                tr
+                    td
+                        table(width="640", align="center", cellspacing="0", cellpadding="0", border="0", style="color:#474747; font-family:Verdana,Arial,Helvetica,sans-serif;")
+                            tbody
+                                tr
+                                    td(width="20", height="100%")
+                                    td
+                                        table(width="600", cellspacing="0", cellpadding="0", border="0", bgcolor="white")
+                                            tbody
+                                                tr
+                                                    td Header
+                                                tr
+                                                    td Content
+                                                tr
+                                                    td Footer
+                                    td(width="20", height="100%")
+                tr
+                    td(height="50")
 
 
+    //body
+        table(width="100%", cellspacing="0", cellpadding="0", border="0")
+            tbody
+                // upperHeader
 
-				// footer
-				tr
-					td(width="100%", height="11", style="background-image:url(img/graphic_footer_bg_transition.png); background-repeat:repeat-x; background-color: #C6AC89;")
-				tr
-					td(bgcolor="#232223", width="100%", style="font-size: 10px; color: #fff; background-image:url(img/graphic_footer_bg.jpg); background-position: center top; background-size:100% 100%; background-color:#232223;")
-						table(width="680", align="center", cellspacing="0", cellpadding="0", border="0")
-							tbody
-								tr
-									td(width="20", height="100%")
-									td(width="640")
-										table(width="640", align="center", cellspacing="0", cellpadding="0", border="0")
-											tbody
-												block footerContent
-									td(width="20", height="100%")
-				tr
-					td(bgcolor="#232223", width="100%", style="font-size: 10px; color: #fff; background-image:url(img/graphic_footer_bg.jpg); background-position: center top; background-size:100% 100%; background-color:#232223;")
-						table(width="680", align="center", cellspacing="0", cellpadding="0", border="0")
-							tbody
-								tr
-									td(width="20", height="100%")
-									td(width="640")
-										table(width="640", align="center", cellspacing="0", cellpadding="0", border="0")
-											tbody
-												tr
-													td(style="text-align:center; font-size: 12px;", mc:edit="editor_footer_unsub")
-														| Hvis du ikke ønsker at modtage nyhedsmails mere, så klik&nbsp;
-														a(href="*|UNSUB|*", style="color: #ffffff; font-size: 12px;") her
-												tr
-													td(width="100%", height="20")
-									td(width="20", height="100%")
+                tr
+                    td(bgcolor="#030303", width="100%")
+                        block footerContent
+                // footer
+                tr
+                    td(width="100%", height="11", style="background-image:url(img/graphic_footer_bg_transition.png); background-repeat:repeat-x; background-color: #C6AC89;")
+                tr
+                    td(bgcolor="#232223", width="100%", style="font-size: 10px; color: #fff; background-image:url(img/graphic_footer_bg.jpg); background-position: center top; background-size:100% 100%; background-color:#232223;")
+                        table(width="680", align="center", cellspacing="0", cellpadding="0", border="0")
+                            tbody
+                                tr
+                                    td(width="20", height="100%")
+                                    td(width="640")
+                                        table(width="640", align="center", cellspacing="0", cellpadding="0", border="0")
+                                            tbody
 
-
+                                    td(width="20", height="100%")

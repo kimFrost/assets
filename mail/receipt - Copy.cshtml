@@ -1,30 +1,79 @@
-﻿
+﻿@using System.Globalization
+@using Core.Models.Commerce.Basket
+@using RazorEngine
+@inherits RazorEngine.Templating.TemplateBase<Core.Models.Commerce.Orders.Model.OrderReceipt>
+@helper DisplayPriceCell(LineItem item, bool total)
+{
+    string unitText = total ? "" : string.Format("{0} {1}", Model.Labels.PerUnit, item.Unit);
+    if (item is LineItemWithNormalPrice)
+    {
+        <p style="margin: 0; padding: 0; font-weight: normal; color: #848484">
+            @Model.Labels.NormalPriceLabel @unitText<br>@DisplayLineItemUnitPrice(item, total)
+        </p>
+    }
+    else if (item is LineItemWithDiscountPrice)
+    {
+        <p style="margin: 0; padding: 0; font-weight: normal;">
+            <b style="color: #848484">@Model.Labels.DiscountPriceLabel @unitText</b><br><span style="color: #FE8E1D">@DisplayLineItemUnitPrice(item, total)</span>
+        </p>
+    }
+    else if (item is LineItemWithMemberPrice)
+    {
+        <p style="margin: 0; padding: 0; font-weight: normal;">
+            <b style="color: #848484">@Model.Labels.MemberPriceLabel @unitText</b><br><span style="color: #FE8E1D">@DisplayLineItemUnitPrice(item, total)</span>
+        </p>
+    }
+
+}
+@helper DisplayLineItemUnitPrice(LineItem item, bool total, bool withCurrency = true)
+{
+    decimal price = 0;
+
+    if (item is LineItemWithDiscountPrice)
+    {
+        var discountItem = (LineItemWithDiscountPrice)item;
+        price = total ? discountItem.DiscountPriceTotal : discountItem.DiscountPriceUnit;
+    }
+    else if (item is LineItemWithNormalPrice)
+    {
+        var normalItem = (LineItemWithNormalPrice)item;
+        price = total ? normalItem.NormalPriceTotal : normalItem.NormalPriceUnit;
+    }
+    else if (item is LineItemWithMemberPrice)
+    {
+        var memberItem = (LineItemWithMemberPrice)item;
+        price = total ? memberItem.MemberPriceTotal : memberItem.MemberPriceUnit;
+    }
+    @DisplayPrice(price, withCurrency);
+}
+
+@helper DisplayPrice(decimal price, bool withCurrency = true)
+{
+    if (price == 0)
+    {
+        <span>@Model.Labels.FreePriceLabel</span>
+    }
+    else
+    {
+        var cultureInfo = new CultureInfo("da-DK");
+        @(withCurrency ?
+        string.Format(cultureInfo, "{0:F2} {1}", price, Model.Order.Basket.ValutaName) :
+        string.Format(cultureInfo, "{0:F2}", price))
+    }
+}
+
 <!DOCTYPE html>
 <html lang="da">
 <head>
     <title>Silvan</title>
     <meta charset="UTF-8">
 </head>
-
-body(style="margin:0; background-color:#F4F3F2; color:#474747")
-    table(width="100%", cellspacing="0", cellpadding="0", border="0", bgcolor="#F4F3F2", bgcolor="#F4F3F2" style="color:#474747; font-family:Verdana,Arial,Helvetica,sans-serif;")
-        tbody
-            tr
-                td
-                    table(width="100%", cellspacing="0", cellpadding="0", border="0", bgcolor="#F4F3F2", bgcolor="#F4F3F2" style="color:#474747; font-family:Verdana,Arial,Helvetica,sans-serif;")
-                        tbody
-                            tr
-                                td(colspan="3", height="20")
-                            tr
-                                td(width="20", height="100%")
-                                td
-                                    table(width="100%", cellspacing="0", cellpadding="0", border="0", bgcolor="#F4F3F2", bgcolor="#F4F3F2" style="color:#474747; font-family:Verdana,Arial,Helvetica,sans-serif;")
-
-                                td(width="20", height="100%")
-
-
-
-
+<body style="margin:0; background-color:#F4F3F2; color:#474747">
+    <table width="100%" cellspacing="0" cellpadding="0" border="0" bgcolor="#F4F3F2"
+           style="color:#474747; font-family:Verdana,Arial,Helvetica,sans-serif;">
+        <tbody>
+            <tr>
+                <td>
                     <table width="600" bgcolor="#F4F3F2" align="center" cellspacing="0" cellpadding="0" border="0"
                            style="min-width: 600px; width: 100%; font-size: 16px; line-height: 1; font-weight: normal; font-family: Lato, Trebuchet MS, Sans-Serif;">
                         <tbody>

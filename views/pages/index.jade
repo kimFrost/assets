@@ -1,242 +1,27 @@
 extends ../master
 
 
+//block append newsContent
+    tr
+        td(height="20")
+    tr
+        td
+            img(src="img/headline_welcome.png")
+    tr
+        td
+            img(src="img/spacer_dotted.png")
+    tr
+        td(height="15")
+    tr
+        td
+            table(width="100%", cellspacing="0", cellpadding="0", border="0")
 
-block append newsContent
-	tr
-		td(height="20")
-	tr(mc:hideable)
-		td
-			img(src="img/headline_welcome.png", mc:edit="editor_headline_welcome_image")
-	tr
-		td
-			img(src="img/spacer_dotted.png")
-	tr
-		td(height="15")
-	tr(mc:repeatable="editor_repeat_content_post", mc:variant="contentType1")
-		td
-			table(width="100%", cellspacing="0", cellpadding="0", border="0")
-				tbody
-					tr
-						td
-							table(width="100%", cellspacing="0", cellpadding="0", border="0")
-								tbody
-									tr
-										td(valign="top")
-											img(src="img/content_img_01.jpg", mc:edit="editor_content1_image")
-										td(width="30")
-										td(valign="top", style="font-size: 12px; color:#000; background-color: #c6ac89;")
-											h2(style="font-size: 18px;color:#262526;margin-top: 10px;")
-												span(mc:edit="editor_content1_headline") Hovednyhedens område
-											div(mc:edit="editor_content1_body")
-												p
-													| Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi commodo, ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio lorem non turpis. Nullam sit amet enim. Suspendisse id velit vitae ligula volutpat condimentum. Aliquam erat volutpat. Sed quis velit. Nulla facilisi. Nulla libero. Vivamus pharetra posuere sapien. Nam consectetuer. Sed aliquam, nunc eget euismod ullamcorper, lectus nunc ullamcorper orci, fermentum bibendum enim nibh eget ipsum. Donec porttitor ligula eu dolor. Maecenas vitae nulla consequat libero cursus venenatis. Nam magna enim, accumsan eu, blandit sed, blandit a, eros.
-												p
-													| Quisque facilisis erat a dui. Nam malesuada ornare dolor. Cras gravida, diam sit amet rhoncus ornare, erat elit consectetuer erat, id egestas pede nibh eget odio. Proin tincidunt, velit vel porta elementum.
-					tr
-						td(width="100%", height="40")
-	tr(mc:repeatable="editor_repeat_content_post", mc:variant="contentType2")
-		td
-			table(width="100%", cellspacing="0", cellpadding="0", border="0")
-				tbody
-					tr
-						td
-							table(width="100%", cellspacing="0", cellpadding="0", border="0")
-								tbody
-									tr
-										td(valign="top", style="font-size: 12px; color:#000; background-color: #c6ac89;")
-											h2(style="font-size: 18px; color:#262526; margin-top:10px;")
-												span(mc:edit="editor_content2_headline") Hovednyhedens område
-											div(mc:edit="editor_content2_body")
-												p
-													| Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi commodo, ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio lorem non turpis. Nullam sit amet enim. Suspendisse id velit vitae ligula volutpat condimentum. Aliquam erat volutpat. Sed quis velit. Nulla facilisi. Nulla libero. Vivamus pharetra posuere sapien. Nam consectetuer. Sed aliquam, nunc eget euismod ullamcorper, lectus nunc ullamcorper orci, fermentum bibendum enim nibh eget ipsum. Donec porttitor ligula eu dolor. Maecenas vitae nulla consequat libero cursus venenatis. Nam magna enim, accumsan eu, blandit sed, blandit a, eros.
-												p
-													| Quisque facilisis erat a dui. Nam malesuada ornare dolor. Cras gravida, diam sit amet rhoncus ornare, erat elit consectetuer erat, id egestas pede nibh eget odio. Proin tincidunt, velit vel porta elementum.
-										td(width="30")
-										td(valign="top")
-											img(src="img/content_img_02.jpg", mc:edit="editor_content2_image")
-					tr
-						td(width="100%", height="50")
+    tr
+        td
+            table(width="100%", cellspacing="0", cellpadding="0", border="0")
 
-
-
-block append productsContent
-	tr
-		td
-			img(src="img/headline_products.png", mc:edit="editor_headline_products_image")
-	tr
-		td
-			img(src="img/spacer_dotted.png")
-	tr
-		td
-			table(width="100%", cellspacing="0", cellpadding="0", border="0", style="font-size: 12px; text-align: center;")
-				tbody
-					tr
-						- for (var i = 1; i < 5; i++)
-							td
-								a(href="#", style="color: #000;")
-									table(width="100%", cellspacing="0", cellpadding="0", border="0")
-										tbody
-											tr
-												td
-													img(src="img/content_product_01.jpg", mc:edit="editor_product#{i}_image")
-											tr
-												td(style="font-size: 12px; background-color: #c6ac89", mc:edit="editor_product#{i}_text") Lorem ipsum dolor sit met, consectetuer. ipiscing elit.
-
-block append blogContent
-	tr
-		td
-			table(width="100%", cellspacing="0", cellpadding="0", border="0", mc:hideable)
-				tbody
-					tr
-						td
-							img(src="img/headline_blog.png", mc:edit="editor_headline_blog_image")
-					tr
-						td
-							img(src="img/spacer_dotted.png")
-					tr
-						td(height="15")
-	tr
-		td
-			table(width="100%", cellspacing="0", cellpadding="0", border="0", style="font-size: 12px; text-align: left;")
-				tbody
-					// mc:repeatable
-					- for (var i = 1; i < 2; i++)
-						tr(mc:repeatable="editor_repeat_blog_post")
-							td
-								table
-									tbody
-										tr
-											td(valign="top", align="left", width="165")
-												img(src="img/content_blog_01.jpg", mc:edit="editor_repeat_blog_post_image")
-											td(width="20")
-											td(valign="top", align="left", style="color: #000;")
-												h2(style="margin-bottom: 3px; font-size: 18px; font-weight:normal; margin-top:5px; color:#262526; background-color:#f7f7f7", mc:edit="editor_repeat_blog_post_headline") Amet dolar 0sit lorem amet dolar lorem
-												p(style="font-size: 10px; background-color: #f7f7f7", mc:edit="editor_repeat_blog_post_writer")
-													| Udgivet den 3. december 2013 af
-													a(style="color: #8b7250;")  Jeanette
-												p(style="font-size: 12px; background-color: #f7f7f7", mc:edit="editor_repeat_blog_post_content") Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi commodo, ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio lorem non turpis. Nullam sit amet enim. Suspendisse id velit vitae ligula volutpat condimentum. Aliquam erat volutpat. Sed quis velit. Nulla facilisi. Nulla libero. Vivamus pharetra posuere sapien. Nam consectetuer. Sed aliquam, nunc eget euismod ullamcorper, lectus nunc ullamcorper orci, fermentum bibendum enim nibh eget ipsum. Donec porttitor ligula eu dolor.
-												p
-													div(mc:edit="editor_blog_link")
-														a(href="#")
-															img(src="img/graphic_readmore.png")
-										tr
-											td(height="30", colspan="3")
-
-block append recipeContent
-	tr
-		td
-			table(width="100%", cellspacing="0", cellpadding="0", border="0", mc:hideable)
-				tbody
-					tr
-						td
-							img(src="img/headline_recipes.png", mc:edit="editor_headline_recipes_image")
-					tr
-						td
-							img(src="img/spacer_dotted.png")
-	tr
-		td
-			table(width="100%", cellspacing="0", cellpadding="0", border="0", style="font-size: 12px; text-align: left;")
-				tbody
-					// mc:repeatable
-					- for (var i = 1; i < 2; i++)
-						tr(mc:repeatable="editor_repeat_recipe_post")
-							td
-								table
-									tbody
-										tr
-											td(colspan="3", height="20")
-										tr
-											td(colspan="3", align="left", style="background-color: #c6ac89")
-												h2(style="font-size: 18px;margin-bottom: 5px;", mc:edit="editor_repeat_recipe_headline") Knasende lakridsristede speltflager med blå kornblomster
-													span(style="font-size: 12px;") (4 pers.)
-												p(mc:edit="editor_repeat_recipe_writer") Opskrift af: Personens navn
-										tr
-											td(colspan="3", height="10")
-										tr
-											td(width="294", valign="top")
-												img(src="img/content_recipe_01.jpg", mc:edit="editor_repeat_recipe_image")
-											td(width="20")
-											td(style="font-size: 12px; background-color: #c6ac89", mc:edit="editor_repeat_recipe_content")
-												h2 Om opskriften
-												p Denne portion er nok til mange forskellige sommerdesserter. Det ristede knas er velegnet til drys på hjemmebagte kager og desserter, yoghurt eller koldskål.
-												br
-
-												h2 Ingredienser
-												p
-													| 500 g økologisk speltflager*
-													br
-													| 150 g økologisk blomsterhonning*
-													br
-													| 50 g økologisk rålakridspulver*
-													br
-													| 150 g hakkede og ristede økologiske hasselnøddekerner*
-													br
-													| 25 g tørrede blå kornblomster
-													br
-													| * = Urtekram produkter
-
-												h2 Framgangsmåde
-												p Varm honning og rålakrids i en lille gryde. Bland speltflager grundigt med det lune honning og lakrids. Rist blandingen ved 150 gradet til flangerne er gyldne og sprøde. Lad køle helt ned og rør i blandingen under vejs så de ikke klister sammen. Bland med hasselnødder og blå kornblomst. Opbevar i et lufttæt glas.
-												p Denne skønne knas kan holde i et par måneder - men det får den ikke lov til ;-)
-										tr
-											td(colspan="3", height="30")
-					tr
-						td(align="center",colspan="3")
-							div(mc:edit="editor_recipe_link", style="background-color: #c6ac89")
-								a(href="http://urtekram.dk/opskrifter/retter/alle", target="_blank")
-									img(src="img/graphic_readmore2.png")
-					tr
-						td(colspan="3", height="20")
-
-
-block append competitionContent
-	tr
-		td
-			table(width="100%", cellspacing="0", cellpadding="0", border="0", mc:hideable)
-				tbody
-					tr
-						td
-							img(src="img/headline_competition.png", mc:edit="editor_headline_competition_image")
-					tr
-						td
-							img(src="img/spacer_dotted.png")
-					tr
-						td(height="15")
-	tr
-		td
-			table(width="100%", cellspacing="0", cellpadding="0", border="0", style="font-size: 12px; text-align: left;")
-				tbody
-					// mc:repeatable
-					- for (var i = 1; i < 2; i++)
-						tr(mc:repeatable="editor_repeat_competition_post")
-							td
-								table
-									tbody
-										tr
-											td(valign="top", align="left", width="165")
-												img(src="img/content_blog_01.jpg", mc:edit="editor_repeat_competition_post_image")
-											td(width="20")
-											td(valign="top", align="left", style="color: #000;")
-												h2(style="margin-bottom: 3px; font-size: 18px; font-weight:normal; margin-top:5px; color:#262526; background-color:#f7f7f7", mc:edit="editor_repeat_competition_post_headline") Amet dolar 0sit lorem amet dolar lorem
-												p(style="font-size: 12px; background-color: #f7f7f7", mc:edit="editor_repeat_competition_post_content") Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Morbi commodo, ipsum sed pharetra gravida, orci magna rhoncus neque, id pulvinar odio lorem non turpis. Nullam sit amet enim. Suspendisse id velit vitae ligula volutpat condimentum. Aliquam erat volutpat. Sed quis velit. Nulla facilisi. Nulla libero. Vivamus pharetra posuere sapien. Nam consectetuer. Sed aliquam, nunc eget euismod ullamcorper, lectus nunc ullamcorper orci, fermentum bibendum enim nibh eget ipsum. Donec porttitor ligula eu dolor.
-												p
-													div(mc:edit="editor_competition_link")
-														a(href="#")
-															img(src="img/graphic_participate.png")
-										tr
-											td(height="30", colspan="3")
 
 
 block append footerContent
-	tr
-		td(width="100%", height="20")
-	tr
-		td(align="center", style="font-size: 12px;", mc:edit="editor_footer_line1") Copyright Urtekram 2014
-	tr
-		td(width="100%", height="20")
-	//tr
-		td(align="center")
-			a(href="#", style="text-decoration:underline;color: #ffffff; font-size: 10px;", mc:edit="editor_footer_line2") Tilmeld/frameld urtekram nyhedsbrev
-	//tr
-		td(width="100%", height="20")
+    tr
+        td(width="100%", height="20")
