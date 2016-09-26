@@ -1,24 +1,21 @@
 - var bodyStyle = "margin:0; height: 100%; width: 100%; background-color: #e9e9e2; color:#3e3e3d; font-size: 12px;";
-
-- var tableBase ='width="100%", cellspacing="0", cellpadding="0", border="0 ';
-- var tableStyle = 'font-family: Verdana, Arial, Helvetica, sans-serif; ';
-
+- var tableBase ='width="100%", cellspacing="0", cellpadding="0", border="0';
+- var fontStyle = 'font-family: Helvetica, Arial, sans-serif;';
 - var footerTextStyle = 'color: #737a80; font-size: 12px;';
-- var linkStyle = 'color: #d4793a; text-decoration: none; font-size: 12px; ';
-
+- var linkStyle = 'color: #d4793a; text-decoration: none; font-size: 12px;';
 - var contentWidth = 600;
-
 
 doctype transitional
 html
     head
         meta(http-equiv="Content-Type", content="text/html; charset=UTF-8")
         title
-            | Nemlig.com
+            | nemlig.com
         block head
         style.
             html, body {
                 #{bodyStyle}
+                #{fontStyle}
             }
 
             img {
@@ -31,27 +28,8 @@ html
                 border: none;
                 #{linkStyle}
             }
-
-            p {
-                font-size: 12px;
-            }
-
-            h1, h2, h3, h4 {
-                font-size: 18px;
-            }
-
-            h1, h2, h3, h4, p {
-                margin-top: 0;
-                font-weight: normal;
-            }
-
-            td {
-                font-family: Verdana, Arial, Helvetica, sans-serif;
-            }
-
-
     body(style="#{bodyStyle}")
-        table(width="100%", cellspacing="0", cellpadding="0", border="0", style="#{bodyStyle}")
+        table(width="100%", cellspacing="0", cellpadding="0", border="0", style="#{bodyStyle} #{fontStyle}")
             tbody
                 tr
                     td(height="100")
@@ -70,26 +48,27 @@ html
                                                             tbody
                                                                 tr
                                                                     td
-                                                                        img(src="http://placehold.it/180x80")
+                                                                        img(src="logo.png")
                                                 tr
                                                     td
-                                                        table(width="100%", cellspacing="0", cellpadding="20", border="0", bgcolor="#ffffff")
+                                                        table(width="100%", cellspacing="0", cellpadding="20", border="0", bgcolor="#fcfcfc")
                                                             tbody
                                                                 tr
                                                                     td Content
-                                                trp
+                                                tr
                                                     td
                                                         table(width="100%", cellspacing="0", cellpadding="0", border="0")
                                                             tbody
                                                                 tr
                                                                     td(height="10")
                                                                 tr
-                                                                    td(align="center", style="#{footerTextStyle}") nemlg.com - Banemarksvej 58, 2605 Brøndby - CVR: 33070861
+                                                                    td(align="center", style="#{footerTextStyle}") nemlig.com - Banemarksvej 58, 2605 Brøndby - CVR: 33070861
                                                                 tr
                                                                     td(height="10")
                                                                 tr
                                                                     td(align="center")
-                                                                        a(href="#", style="#{linkStyle}") Handelsbetingelser
+                                                                        a(href="#", style="#{linkStyle}")
+                                                                            span(style="#{linkStyle}") Handelsbetingelser
                                     td(width="20", height="100%")
                 tr
                     td(height="50")
